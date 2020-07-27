@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Xml2Sb.Models;
 
 namespace Xml2Sb
 {
@@ -17,6 +19,14 @@ namespace Xml2Sb
             {
                 var name = reader.Name;
             }
+
+            var elements = new List<IStoryboardElement>()
+            {
+                new DocumentElement()
+            };
+
+            var writer = new StoryboardWriter();
+            writer.Write(elements);
         }
     }
 }

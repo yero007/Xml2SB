@@ -20,12 +20,12 @@ namespace Xml2Sb.Models
 
         public string GetFooter()
         {
-            return "/>";
+            return string.Empty;
         }
 
         public string GetHeader()
         {
-            return $"<plugIn {GetHeaderTags(GetHeaderTagsList())}";
+            return $"<plugIn {GetHeaderTags(GetHeaderTagsList())}/>";
         }
 
         public List<HeaderTag> GetHeaderTagsList()

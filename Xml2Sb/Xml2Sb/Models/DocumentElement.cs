@@ -13,6 +13,9 @@ namespace Xml2Sb.Models
             var list = new List<IStoryboardElement>();
             var deviceElement = new DeviceElement(IndentLevel +1);
             list.Add(deviceElement);
+
+            var dependencies = new DependenciesElement(IndentLevel + 1);
+            list.Add(dependencies);
             return list;
         }
 

@@ -14,36 +14,54 @@ namespace Xml2Sb
             mFilePath = filePath;
         }
 
-        public void Write(List<IStoryboardElement> elements)
+        public void Write(IStoryboardElement element)
         {
             var header = GetHeader();
             using (var file = new StreamWriter(mFilePath))
             {
-                file.WriteLine(header);
-                foreach (var element in elements)
-                {
-                    file.WriteLine(element.GetHeader());
-                    
-                   
-                    file.WriteLine(element.GetFooter());
-                }
+                WriteLine(file, string.Empty, header);
+                PrintChild(element, file);
             }
         }
 
         public void PrintChild(IStoryboardElement element, StreamWriter file)
         {
             //todo:finish this
-            file.WriteLine(element.GetHeader());
-
-
-            file.WriteLine(element.GetFooter());
+            //add indent
+            WriteLine(file, GetIndent(element.IndentLevel), element.GetHeader());
             if (element.GetChildren() == null)
             {
-                file.WriteLine(element.GetFooter());
+                WriteLine(file, GetIndent(element.IndentLevel), element.GetFooter());
 
                 return;
             }
-            
+
+            foreach (var elementItem in element.GetChildren())
+            {
+                PrintChild(elementItem, file);
+            }
+
+            WriteLine(file, GetIndent(element.IndentLevel), element.GetFooter());
+        }
+
+        public void WriteLine(StreamWriter file, string indent,  string line)
+        {
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                return;
+            }
+            file.WriteLine($"{indent}{line}");
+        }
+
+        public string GetIndent(int indentLevel)
+        {
+            var text = string.Empty;
+            for (var i=0;i<indentLevel; i++)
+            {
+                text += "\t";
+            }
+
+            return text;
         }
 
         public string GetHeader()

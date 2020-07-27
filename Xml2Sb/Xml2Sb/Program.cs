@@ -20,13 +20,10 @@ namespace Xml2Sb
                 var name = reader.Name;
             }
 
-            var elements = new List<IStoryboardElement>()
-            {
-                new DocumentElement()
-            };
+            var element = new DocumentElement();
 
             var writer = new StoryboardWriter();
-            writer.Write(elements);
+            writer.Write(element);
         }
     }
 }

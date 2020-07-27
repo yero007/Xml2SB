@@ -9,8 +9,9 @@ namespace Xml2Sb.Models
     //    <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
     //    <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     //</dependencies>
-        public DependenciesElement()
+        public DependenciesElement(int indent)
         {
+            IndentLevel = indent;
         }
 
         public int IndentLevel { get; set; }

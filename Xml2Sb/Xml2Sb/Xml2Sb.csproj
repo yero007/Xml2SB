@@ -36,6 +36,11 @@
     <Compile Include="StoryboardWriter.cs" />
     <Compile Include="Models\IStoryboardElement.cs" />
     <Compile Include="Models\DocumentElement.cs" />
+    <Compile Include="Models\HeaderTag.cs" />
+    <Compile Include="Models\DeviceElement.cs" />
+    <Compile Include="Models\DependenciesElement.cs" />
+    <Compile Include="Models\PluginElement.cs" />
+    <Compile Include="Models\CapabilityElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

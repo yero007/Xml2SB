@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using Xml2Sb.Models;
 
 namespace Xml2Sb
 {
@@ -12,7 +14,7 @@ namespace Xml2Sb
             mFilePath = filePath;
         }
 
-        public void Write(System.Collections.Generic.List<Models.IStoryboardElement> elements)
+        public void Write(List<IStoryboardElement> elements)
         {
             var header = GetHeader();
             using (var file = new StreamWriter(mFilePath))
@@ -21,8 +23,27 @@ namespace Xml2Sb
                 foreach (var element in elements)
                 {
                     file.WriteLine(element.GetHeader());
+                    
+                   
+                    file.WriteLine(element.GetFooter());
                 }
             }
+        }
+
+        public void PrintChild(IStoryboardElement element, StreamWriter file)
+        {
+            //todo:finish this
+            file.WriteLine(element.GetHeader());
+
+
+            file.WriteLine(element.GetFooter());
+            if (element.GetChildren() == null)
+            {
+                file.WriteLine(element.GetFooter());
+
+                return;
+            }
+            
         }
 
         public string GetHeader()

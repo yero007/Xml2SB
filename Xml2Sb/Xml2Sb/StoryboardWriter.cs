@@ -26,8 +26,6 @@ namespace Xml2Sb
 
         public void PrintChild(IStoryboardElement element, StreamWriter file)
         {
-            //todo:finish this
-            //add indent
             WriteLine(file, GetIndent(element.IndentLevel), element.GetHeader());
             if (element.GetChildren() == null)
             {
